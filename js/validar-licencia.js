@@ -20,15 +20,15 @@
 
 // Data EXCEL
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+const { createClient } = supabase;
 
 const supabaseUrl = 'https://aenlcrtjqgnxwzynorto.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFlbmxjcnRqcWdueHd6eW5vcnRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NTcyOTEsImV4cCI6MjA1NzUzMzI5MX0.cIFQtbPfoXvagGfW9fdg4qV_-UxvLB9luLhXqt1aFVs';
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabaseClient = createClient(supabaseUrl, supabaseKey)
 
 try {
 	(async () => {
-		const { data, error } = await supabase
+		const { data, error } = await supabaseClient
 		.from('medidata')
 		.select()
 		console.log(data)

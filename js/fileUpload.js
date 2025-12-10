@@ -1,8 +1,8 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+const { createClient } = supabase;
 
 const supabaseUrl = 'https://aenlcrtjqgnxwzynorto.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFlbmxjcnRqcWdueHd6eW5vcnRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5NTcyOTEsImV4cCI6MjA1NzUzMzI5MX0.cIFQtbPfoXvagGfW9fdg4qV_-UxvLB9luLhXqt1aFVs';
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabaseClient = createClient(supabaseUrl, supabaseKey)
 
 document.getElementById("importButton").addEventListener("click", function() {
     document.getElementById("fileUpload").click();
@@ -41,11 +41,11 @@ document
           );
           let jsonObject = JSON.stringify(rowObject, null, 2);
           console.log(jsonObject)
-          const { data, error } = await supabase
+          const { data, error } = await supabaseClient
             .from('medidata')
             .select()
             if (data.length > 0) {
-                const { error } = await supabase
+                const { error } = await supabaseClient
                 .from('medidata')
                 .update({ data: jsonObject })
                 .eq('id', 2)
@@ -56,7 +56,7 @@ document
                 return;
             }
             try {
-                const { error } = await supabase
+                const { error } = await supabaseClient
                 .from('medidata')
                 .insert({ data: jsonObject })
                 if (error) return alert('Ha ocurrido un error al cargar la data.')
