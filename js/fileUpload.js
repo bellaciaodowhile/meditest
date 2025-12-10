@@ -6,6 +6,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 document.getElementById("importButton").addEventListener("click", function() {
     document.getElementById("fileUpload").click();
+    console.log('Importar data...')
 });
 
 const preview = document.querySelector('.preview');
@@ -39,9 +40,7 @@ document
             workbook.Sheets[sheet]
           );
           let jsonObject = JSON.stringify(rowObject, null, 2);
-
-        //   return console.log(jsonObject)
-
+          console.log(jsonObject)
           const { data, error } = await supabase
             .from('medidata')
             .select()
