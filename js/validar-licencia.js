@@ -88,7 +88,7 @@ function consult() {
 		dateOfGranting.textContent = patient[0]?.FechaOtorgamiento;
 		instSalud.textContent = patient[0]?.InstSaludPrevisional;
 		fullNameMedic.textContent = patient[0]?.NombreMedico;
-		rutEmp.textContent = patient[0]?.RutEmpleador;
+		rutEmp.textContent = patient[0] ? patient[0]['Rut Empleador '] : '';
 		social.textContent = patient[0]?.RazonSocial;
 		linkPdf.href = patient[0]?.LinkPdf;
 
